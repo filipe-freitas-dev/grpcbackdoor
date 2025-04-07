@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package backdoor;
+
+option go_package = "./src/pb/backdoor";
+
+message Out {
+    string output = 1; 
+}
+
+service BackdoorService {
+    rpc RemoteExec(stream Out) returns (stream Out);
+}
